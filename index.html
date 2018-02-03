@@ -1,0 +1,196 @@
+<html>
+
+<head>    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ["orgchart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Manager');
+            data.addColumn('string', 'ToolTip');
+
+            // For each orgchart box, provide the name, manager, and tooltip to show.
+            data.addRows([
+
+                [{ v: 'BankPlus', f: 'BankPlus<div style="background-color:#ffffff;color:Black; padding:10px 175px 10px 175px;font-style:italic">Corporate Goals<br> "As OFF Date"<BR>$ in Thousands</div>' }, '', 'Corporate Goals'],
+
+                [{ v: 'Efficiency Ratio', f: 'Efficiency Ratio<div style="background-color:#ffffff;color:Black">67.65%</div>' }, 'BankPlus', 'Efficiency Ratio'],
+
+                ['ROA<div style="background-color:#026562;color:#ffffff; font-style:normal;font-weight:bold">1.04%</div><div id="treechart_div" style="width: 225px; height: 125px;">', 'BankPlus', 'ROA'],
+
+                ['Pre-Tax, Pre-Provision, Pre-ORE Writedowns & Losses Operating Income<div style="background-color:#ffffff"> $47,625 </div>', 'BankPlus', ''],
+
+                ['ROE<div style="background-color:red;color:#fffffff">10.99%</div>', 'BankPlus', ''],
+
+                [{ v: 'Noninterest Expense', f: 'Noninterest Expense<div style="background-color:#ffffff;color:Black">$94,162</div>' }, 'Efficiency Ratio', 'Noninterest Expense'],
+
+                [{ v: 'Interest Income', f: 'Interest Income<div style="background-color:#ffffff;color:Black">$97,107</div>' }, 'Efficiency Ratio', 'Interest Income'],
+
+                [{ v: 'Interest Expense', f: 'Interest Expense<div style="background-color:#ffffff;color:Black">$8,547</div>' }, 'Efficiency Ratio', 'Interest Expense'],
+
+                [{ v: 'Noninterest Income', f: 'Interest Expense<div style="background-color:#ffffff;color:Black">$50,636</div>' }, 'Efficiency Ratio', 'Noninterest Income'],
+
+                ['Salaries & Benefits<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'Salaries & Benefits'],
+
+                ['Occupancy<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'Occupancy'],
+
+                ['Data processing<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'Data processing'],
+
+                ['Promotional & advertising<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'Promotional & advertising'],
+
+                ['FDIC Insurance<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'FDIC Insurance'],
+
+                ['ATM, security and other<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Noninterest Expense', 'ATM, security and other'],
+
+                ['Interest on loans<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Interest on loans'],
+
+                ['Fees on loans<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Fees on loans'],
+
+                ['Investment Income<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Investment Income'],
+
+                ['Tax Benefit for Tax-exempt income<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Tax Benefit for Tax-exempt income'],
+
+                ['Loan Yield<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Loan Yield'],
+
+                ['Loan Volume<div style="background-color:#fff;color:#fffffff">53,486</div>', 'Interest Income', 'Loan Volume'],
+
+                ['Investment security  yield<div style="background-color:#fff;color:#fffffff">53,486</div><div id="treechart_div2" style="width: 225px; height: 125px;">', 'Interest Income', 'Investment security  yield']
+
+            ]);
+
+
+
+
+            // Create the chart.
+            var orgChart = new google.visualization.OrgChart(document.getElementById('orgchart_div'));
+            google.visualization.events.addListener(orgChart, 'collapse', collapseHandler);
+            function collapseHandler(e) {
+                if(e.collapsed===true){
+                    drawChart();
+                }else{
+                drawTree2();
+                drawChart();   
+                }            
+            }
+
+            // Draw the chart, setting the allowHtml option to true for the tooltips.
+            orgChart.draw(data,
+                {
+                    allowHtml: true,
+                    allowCollapse: true,
+                    size: 'small'
+                });
+            google.charts.setOnLoadCallback(drawChart);
+        }
+
+    </script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['treemap'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+                ['Global', null, 0, 0],
+                ['America', 'Global', 0, 0],
+                ['Europe', 'Global', 0, 0],
+                ['Asia', 'Global', 0, 0],
+                ['Australia', 'Global', 0, 0],
+                ['Africa', 'Global', 0, 0],
+                ['Brazil', 'America', 11, 10],
+                ['USA', 'America', 52, 31],
+                ['Mexico', 'America', 24, 12],
+                ['Canada', 'America', 16, -23],
+                ['France', 'Europe', 42, -11],
+                ['Germany', 'Europe', 31, -2],
+                ['Sweden', 'Europe', 22, -13],
+                ['Italy', 'Europe', 17, 4],
+                ['UK', 'Europe', 21, -5],
+                ['China', 'Asia', 36, 4],
+                ['Japan', 'Asia', 20, -12],
+                ['India', 'Asia', 40, 63],
+                ['Laos', 'Asia', 4, 34],
+                ['Mongolia', 'Asia', 1, -5],
+                ['Israel', 'Asia', 12, 24],
+                ['Iran', 'Asia', 18, 13],
+                ['Pakistan', 'Asia', 11, -52],
+                ['Egypt', 'Africa', 21, 0],
+                ['S. Africa', 'Africa', 30, 43],
+                ['Sudan', 'Africa', 12, 2],
+                ['Congo', 'Africa', 10, 12],
+                ['Zaire', 'Africa', 8, 10]
+            ]);
+
+            tree = new google.visualization.TreeMap(document.getElementById('treechart_div'))
+
+            tree.draw(data, {
+                minColor: '#f00',
+                midColor: '#ddd',
+                maxColor: '#0d0',
+                headerHeight: 15,
+                fontColor: 'black',
+                showScale: true
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['treemap'] });
+        google.charts.setOnLoadCallback(drawTree2);
+
+        function drawTree2() {
+            var data = google.visualization.arrayToDataTable([
+                ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+                ['Global', null, 0, 0],
+                ['America', 'Global', 0, 0],
+                ['Europe', 'Global', 0, 0],
+                ['Asia', 'Global', 0, 0],
+                ['Australia', 'Global', 0, 0],
+                ['Africa', 'Global', 0, 0],
+                ['Brazil', 'America', 11, 10],
+                ['USA', 'America', 52, 31],
+                ['Mexico', 'America', 24, 12],
+                ['Canada', 'America', 16, -23],
+                ['France', 'Europe', 42, -11],
+                ['Germany', 'Europe', 31, -2],
+                ['Sweden', 'Europe', 22, -13],
+                ['Italy', 'Europe', 17, 4],
+                ['UK', 'Europe', 21, -5],
+                ['China', 'Asia', 36, 4],
+                ['Japan', 'Asia', 20, -12],
+                ['India', 'Asia', 40, 63],
+                ['Laos', 'Asia', 4, 34],
+                ['Mongolia', 'Asia', 1, -5],
+                ['Israel', 'Asia', 12, 24],
+                ['Iran', 'Asia', 18, 13],
+                ['Pakistan', 'Asia', 11, -52],
+                ['Egypt', 'Africa', 21, 0],
+                ['S. Africa', 'Africa', 30, 43],
+                ['Sudan', 'Africa', 12, 2],
+                ['Congo', 'Africa', 10, 12],
+                ['Zaire', 'Africa', 8, 10]
+            ]);
+
+            tree2 = new google.visualization.TreeMap(document.getElementById('treechart_div2'));
+
+            tree2.draw(data, {
+                minColor: '#f00',
+                midColor: '#ddd',
+                maxColor: '#0d0',
+                headerHeight: 15,
+                fontColor: 'black',
+                showScale: true
+            });
+
+
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="orgchart.css">
+</head>
+
+<body>
+    <div style="width:100%;" id="orgchart_div"></div>
+</body>
+
+</html>
